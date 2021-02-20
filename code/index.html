@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <style></style>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+
+    <div class="HHN">
+            <a href="https://www.hs-heilbronn.de/" style="text-decoration:none">
+                <img id="hhnDE" class="HHNimg" src="images/Hochschule_logo.png">
+            </a>
+            <a href="https://www.hs-heilbronn.de/en/" style="text-decoration:none">
+                <img id="hhnEN" class="HHNimg" style="width:0px" src="images/Hochschule_logoEN.png">
+            </a>
+            <button id="logout" class="asText" style="border: none; background-color:#17258f; color: white; float: right; margin-top: 3.3%; margin-right: 0.5%">username</button>
+            <script type="text/javascript">
+                document.getElementById("logout").onclick = function () {
+                    location.href = "index.html";
+                };
+            </script>          
+            <button class="verlaufButton" id="verlauf">Verlauf</button>
+            <button class="languageButtonNotActive" id="english" onclick="languageEN()">EN</button>
+            <button class="languageButtonActive" id="deutsch" onclick="languageDE()">DE</button>
+            <div id="table" class="table" style="display:none">
+                <table  cellpadding="5" cellspacing="0" background-color="white">
+                    <tr>
+                        <th>Check in:</th>
+                        <td><div id="content">Noch kein Zeitstempel erfasst</div></td>
+                    </tr>
+                </table>
+            </div>
+    </div>
+
+    <div class="containerCheckIn">
+        <center>
+            <div>
+                <p id="einchecken" class="einAuschecken">Zum Einchecken Button betätigen.</p>
+                <p id="auschecken" class="einAuschecken" style="display:none">Zum Auschecken Button betätigen.</p>
+                <p id="eincheckenEN" class="einAuschecken" style="display:none">Press the button to check in.</p>
+                <p id="auscheckenEN" class="einAuschecken" style="display:none">Press the button to check out.</p>
+            </div>
+        </center>
+        <center>
+            <div>
+                <button id="checkIn" type="button" class="buttonCheckIn" onclick="myFunction()">Check in</button>
+                <button id="checkOut" type="button" class="buttonCheckOut" style="display:none" onclick="myFunction()">Check out</button>
+            </div>
+        </center>
+    </div>
+
+    <a href="https://www.bundesregierung.de/breg-de/themen/coronavirus/aha-a-formel-1774474" style="text-decoration:none">
+        <img class="aha" src="images/AHA.png">
+    </a>
+
+    <img id="entry" class="entry" src="images/Entry.png">
+    <img id="exit" class="exit" style="display:none" src="images/Exit.png">
+
+    <div class="bg-modal">
+        <div class="modal-content">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>TimeStamp</th>
+                            <th>CheckIn/CheckOut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>    
+                            <td>1</td>
+                            <td>09.11.2020-11:30</td>
+                            <td>Check-In</td>
+                        </tr>
+                        <tr>    
+                            <td>2</td>
+                            <td>09.11.2020-11:35</td>
+                            <td>Check-Out</td>
+                        </tr>
+                    </tbody>
+                </table>
+            <div class="close">
+                +
+            </div>
+        </div>
+    </div>
+       
+    <script>
+
+  var global = "2";
+
+  function languageEN() {
+
+  var de = document.getElementById("deutsch");
+  var en = document.getElementById("english");
+  var einchecken = document.getElementById("einchecken");
+  var auschecken = document.getElementById("auschecken");
+  var eincheckenEN = document.getElementById("eincheckenEN");
+  var auscheckenEN = document.getElementById("auscheckenEN");
+  var buttonCI = document.getElementById("checkOut");
+  var buttonCO = document.getElementById("checkIn");
+  var hhnDE = document.getElementById("hhnDE");
+  var hhnEN = document.getElementById("hhnEN");
+
+    de.setAttribute("class", "languageButtonNotActive");
+    en.setAttribute("class", "languageButtonActive");
+    hhnDE.style.width = "0px";
+    hhnEN.style.width = "20%";
+
+    global = "1";
+
+    if(buttonCI.style.display === "none")    {
+            einchecken.style.display = "none";
+            eincheckenEN.style.display = "block";
+            auschecken.style.display = "none";
+            auscheckenEN.style.display = "none";
+            }
+
+    else if(buttonCO.style.display === "none")   {
+            einchecken.style.display = "none";
+            eincheckenEN.style.display = "none";
+            auschecken.style.display = "none";
+            auscheckenEN.style.display = "block";
+            }
+
+    }
+
+function languageDE() {
+
+  var de = document.getElementById("deutsch");
+  var en = document.getElementById("english");
+  var einchecken = document.getElementById("einchecken");
+  var auschecken = document.getElementById("auschecken");
+  var eincheckenEN = document.getElementById("eincheckenEN");
+  var auscheckenEN = document.getElementById("auscheckenEN");
+  var buttonCI = document.getElementById("checkOut");
+  var buttonCO = document.getElementById("checkIn");
+  var hhnDE = document.getElementById("hhnDE");
+  var hhnEN = document.getElementById("hhnEN");
+
+    en.setAttribute("class", "languageButtonNotActive");
+    de.setAttribute("class", "languageButtonActive");
+    hhnEN.style.width = "0px";
+    hhnDE.style.width = "20%";
+
+    global = "2";
+
+    if(buttonCI.style.display === "none")    {
+            einchecken.style.display = "block";
+            eincheckenEN.style.display = "none";
+            auschecken.style.display = "none";
+            auscheckenEN.style.display = "none";
+            }
+
+    else if (buttonCO.style.display === "none") {
+            einchecken.style.display = "none";
+            eincheckenEN.style.display = "none";
+            auschecken.style.display = "block";
+            auscheckenEN.style.display = "none";
+            }
+
+    }
+
+
+
+
+  function myFunction() {
+  var checkIn = document.getElementById("checkIn");
+  var checkOut = document.getElementById("checkOut");
+  var table = document.getElementById("table");
+  var einchecken = document.getElementById("einchecken");
+  var auschecken = document.getElementById("auschecken");
+  var eincheckenEN = document.getElementById("eincheckenEN");
+  var auscheckenEN = document.getElementById("auscheckenEN");
+  var en = document.getElementById("english");
+  var de = document.getElementById("deutsch");
+  var entry = document.getElementById("entry");
+  var exit = document.getElementById("exit");
+
+if (global === "2") {
+
+  if (checkIn.style.display === "none") {
+
+    einchecken.style.display = "block";
+    auschecken.style.display = "none";
+    eincheckenEN.style.display = "none";
+    auscheckenEN.style.display = "none";
+
+    checkIn.style.display = "block";
+    checkOut.style.display = "none";
+
+    entry.style.display = "block";
+    exit.style.display = "none";
+
+    table.style.display = "none";
+    //sendCheckin();
+    sendCheckout();
+
+  } else {
+
+    einchecken.style.display = "none";
+    auschecken.style.display = "block";
+    eincheckenEN.style.display = "none";
+    auscheckenEN.style.display = "none";
+
+    checkIn.style.display = "none";
+    checkOut.style.display = "block";
+
+    entry.style.display = "none";
+    exit.style.display = "block";
+
+    table.style.display = "block";
+    //sendCheckout();
+    sendCheckin();
+  }
+
+  }
+else {
+ if (checkIn.style.display === "none") {
+
+    einchecken.style.display = "none";
+    auschecken.style.display = "none";
+    eincheckenEN.style.display = "block";
+    auscheckenEN.style.display = "none";
+
+    checkIn.style.display = "block";
+    checkOut.style.display = "none";
+
+    entry.style.display = "block";
+    exit.style.display = "none";
+
+    table.style.display = "none";
+    //sendCheckin();
+    sendCheckout();
+  } else {
+
+    einchecken.style.display = "none";
+    auschecken.style.display = "none";
+    eincheckenEN.style.display = "none";
+    auscheckenEN.style.display = "block";
+
+    checkIn.style.display = "none";
+    checkOut.style.display = "block";
+
+    entry.style.display = "none";
+    exit.style.display = "block";
+
+    table.style.display = "block";
+    //sendCheckout();
+    sendCheckin();
+
+  }
+
+  }
+}
+    </script>
+        
+        
+    <script src="coronastelle.js"></script>
+    </body>
+</html>
